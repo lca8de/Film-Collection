@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My Very Own Virtual Film Library</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+<script language="javascript" type="text/javascript">
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+
+}
+</script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#accordion" ).accordion();
+  });
+  </script>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 100%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+  <script>
+  $(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+  </script>
+
+<!-- drag and drop -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #droppable { width: 130px; height: 160px; padding: 0.5em; float: left; margin: 10px; }
+  #draggable, #draggable-nonvalid { width: 100px; height: 130px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+  </style>
+
+  <script>
+  $(function() {
+    $( "#draggable, #draggable-nonvalid" ).draggable();
+    $( "#droppable" ).droppable({
+      accept: "#draggable",
+      activeClass: "ui-state-hover",
+      hoverClass: "ui-state-active",
+      drop: function( event, ui ) {
+        $( this )
+          .addClass( "ui-state-highlight" )
+          .find( "p" )
+            .html( "Correct!" );
+      }
+    });
+  });
+  </script>
+
+
+
+<!--add film-->
+
+<script>
+  $(document).ready(function() {
+      $("#addfilm").click(function() {
+          
+          $.ajax({
+              url: 'addfilm.php',
+              data: {filmname: $( "#filmname" ).val(), genre: $( "#genre").val(), rating: $("#rating").val()},
+              success: function(data){
+                  $('#results').html(data);   
+              }
+          });
+      });
+  });
+  </script>
+
+
+<!--change rating-->
+
+<script>
+  $(document).ready(function() {
+      $("#changerating").click(function() {
+          
+          $.ajax({
+              url: 'changerating.php',
+              data: {filmname4: $( "#filmname4" ).val(), rating4: $("#rating4").val()},
+              success: function(data){
+                  $('#results4').html(data);   
+              }
+          });
+      });
+  });
+  </script>
+
+
+  <script>
+  $(document).ready(function() {
+      $("#viewcollection").click(function() {
+          
+          $.ajax({
+              url: 'viewcollection.php',
+              
+              success: function(data){
+                  $('#results21').html(data);   
+              }
+          });
+      });
+  });
+  </script>
+
+
+</head>
+<body>
+<div id="templatemo_top_bar_wrapper">
+	<div id="templatemo_top_bar">
+    <!--
+        <form action="#" method="get">
+            <input type="text" value="Search Film Collection..." name="q" size="10" class="inputfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />            
+            <input type="submit" name="Search" value="Search" class="submitbutton" title="Search" />
+        </form>
+      -->
+    </div> <!-- end of top bar -->
+</div> <!-- end of top bar wrapper -->
+
+<div id="templatemo_banner_wrapper">
+
+	<div id="templatemo_banner">
+    
+    	<div id="templatemo_site_title_section">
+        	<div id="templatemo_site_title">
+            	<a href="#">Film Collector<span>My Very Own Virtual Film Library</span></a>
+            </div>
+        </div>
+        
+        <div id="templatemo_banner_content">
+        
+        	<div class="header_01">Lindsay's Film Collection</div>
+            
+
+<!--
+<form action="form.php" method="GET">
+        <label for="name">Name: </label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+
+        <br>
+
+        <label for="email">Email: </label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="email">
+
+        <br>
+        
+        <label for="birthday">Birthday: </label>
+        <input type="text" class="form-control" id="birthday" name="birthday" placeholder="mm/dd/yyyy">
+
+        <br>
+        
+        
+    <button type="submit">Submit!</button>
+</form>
+
+
+        </div>
+-->
+
+    	<div class="cleaner"></div>
+    </div> <!-- end of banner -->
+</div> <!-- end of banner -->
+
+<div id="templatemo_menu_wrapper">
+	<div id="templatemo_menu">
+        <ul>
+              <li><a href="index.html" >Home</a></li>
+              <li><a href="mycollection.html"class="current">My Collection</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="filmquote.html">WishList</a></li>
+             <!-- <li><a href="#" class="last">Contact</a></li>  -->
+        </ul>    	
+    </div> <!-- end of menu -->
+</div> <!-- end of menu wrapper -->
+
+<div id="templatemo_content_wrapper">
+        <div id="top"></div>
+	<div id="templatemo_content">
+
+<p>Start Building the Collection Now</p>
+
+
+
+<input type="text" class="form-control" id="filmname" name="filmname" placeholder="Enter Film Name" required="required">
+<br>
+
+<input type="text" class="form-control" id="genre" name="genre" placeholder="Enter Genre" required="required">
+<br>
+
+<input type="text" class="form-control" id="rating" name="rating" placeholder="Enter Rating" required="required"> <br>
+<p>Rating is on a scale of 1-5, 5 being the best and 1 being the worst</p>
+
+<br>
+
+<button type="button" id="addfilm">Add Film</button>
+<div id="results"> </div>
+
+
+<!--Change Rating-->
+
+<br><br>
+<p>Change The Rating of a Film in the Collection</p>
+
+
+
+<input type="text" class="form-control" id="filmname4" name="filmname4" placeholder="Enter Film Name" required="required">
+<br>
+
+
+<input type="text" class="form-control" id="rating4" name="rating4" placeholder="Enter Rating" required="required"> <br>
+<p>Rating is on a scale of 1-5, 5 being the best and 1 being the worst</p>
+
+<br>
+
+<button type="button" id="changerating">Change Rating</button>
+<div id="results4"> </div>
+ <!--end of change rating-->        
+
+<br><br>
+
+<button type="button" id="viewcollection">View MyCollection</button>
+<div id="results21"></div>
+
+          
+</div> <!-- end of content wrapper -->
+
+<div id="templatemo_footer_wrapper">
+
+	<div id="templatemo_footer">
+<!--    	
+        <div class="section_w195">
+        	<div class="header_05">Services</div>
+            <ul class="footer_menu_list">
+                <li><a href="#">Lorem ipsum dolor</a></li>
+                <li><a href="#">Cum sociis</a></li>
+                <li><a href="#">Donec quam</a></li>
+                <li><a href="#">Nulla consequat</a></li>
+                <li><a href="#">In enim justo</a></li>              
+            </ul>
+        </div>
+        
+        <div class="section_w195">
+        	<div class="header_05">About</div>
+            <ul class="footer_menu_list">
+                <li><a href="#">Nullam quis</a></li>
+                <li><a href="#">Sed consequat</a></li>
+                <li><a href="#">Cras dapibus</a></li> 
+                <li><a href="#">Lorem ipsum dolor</a></li>
+                <li><a href="#">Cum sociis</a></li>                
+            </ul>
+        </div>
+               
+        <div class="section_w195 section_w195_last">
+        	<div class="header_05">Cool links</div>
+            <ul class="footer_menu_list">
+                <li><a href="#">CSS Templates</a></li>
+                <li><a href="#">Flash Templates</a></li>
+                <li><a href="#">Web Design Blog</a></li>
+                <li><a href="#">WordPress Themes</a></li>
+				<li><a href="#">Flash Gallery</a></li>
+          </ul>
+        </div>
+
+        
+        <div class="section_w330">
+			<div class="header_05">Photo Gallery</div>  
+            
+            <ul class="gallery">
+	            <li><a href="#"><img src="images/templatemo_image_01.jpg" alt="image" /></a></li>
+                <li><a href="#"><img src="images/templatemo_image_02.jpg" alt="image" /></a></li>
+                <li><a href="#"><img src="images/templatemo_image_03.jpg" alt="image" /></a></li>
+                <li><a href="#"><img src="images/templatemo_image_04.jpg" alt="image" /></a></li>
+                
+                <li><a href="#"><img src="images/templatemo_image_05.jpg" alt="image" /></a></li>
+                <li><a href="#"><img src="images/templatemo_image_06.jpg" alt="image" /></a></li>
+                <li><a href="#"><img src="images/templatemo_image_07.jpg" alt="image" /></a></li>
+                <li><a href="#"><img src="images/templatemo_image_08.jpg" alt="image" /></a></li>
+			</ul>
+ -->           
+                
+        </div>
+        <div class="margin_bottom_20"></div>
+        Copyright © 2024 Lindsay Andersen <br>
+        <a href="mailto:lca8de@virginia.edu">lca8de@virginia.edu</a>
+        | Credit: <a href="http://www.templatemo.com"> www.templatemo.com</a>
+        
+        <div class="cleaner"></div>
+    </div> <!-- end of footer -->
+    
+</div> <!-- end of footer -->
+<!--  Free CSS Templates by TemplateMo.com  -->
+<!-- templatemo 124 media -->
+<!-- 
+Media Template 
+http://www.templatemo.com/preview/templatemo_124_media 
+-->
+</body>
+</html>
